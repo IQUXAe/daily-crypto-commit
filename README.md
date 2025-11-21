@@ -29,6 +29,18 @@ The script tracks the following cryptocurrencies:
 - Chainlink (LINK)
 - Stellar (XLM)
 
+
+## Price Chart
+
+![Price Chart](price_chart.png)
+
+## Statistics
+
+- **Total cryptocurrencies tracked**: 15
+- **Highest priced crypto**: Bitcoin ($84,221.00)
+- **Lowest priced crypto**: VeChain ($0.01)
+- **Biggest gainer**: Bitcoin (+0.00%)
+- **Biggest loser**: Bitcoin (0.00%)
 ## GitHub Action Configuration
 
 The workflow is configured in `.github/workflows/daily-crypto.yml` and is scheduled to run using cron syntax: `0 12 * * *` (12:00 PM UTC daily).
@@ -54,5 +66,5 @@ The workflow is configured in `.github/workflows/daily-crypto.yml` and is schedu
 | Ontology | ONTOLOGY | $0.07 | N/A | +0.00% | N/A |
 | Zcash | ZCASH | $589.51 | N/A | +0.00% | N/A |
 
-*Last updated: 2025-11-21 18:36:31 UTC*
+*Last updated: 2025-11-21 18:36:49 UTC*
 <!-- CRYPTO_PRICES_END -->
