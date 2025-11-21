@@ -19,7 +19,12 @@ CRYPTO_LIST = {
     "polkadot": "Polkadot",
     "litecoin": "Litecoin",
     "chainlink": "Chainlink",
-    "stellar": "Stellar"
+    "stellar": "Stellar",
+    "monero": "Monero",
+    "algorand": "Algorand",
+    "vechain": "VeChain",
+    "ontology": "Ontology",
+    "zcash": "Zcash"
 }
 
 def fetch_crypto_prices():
@@ -65,11 +70,14 @@ def fetch_crypto_prices():
         print(f"Unexpected error: {e}")
         return None
 
-def update_readme(prices):
-    """Update README file with the latest cryptocurrency prices."""
+def update_readme(prices, previous_prices=None):
+    """Update README file with the latest cryptocurrency prices and comparison."""
     if prices is None:
         print("No data to update in README")
         return False
+
+    if previous_prices is None:
+        previous_prices = {}
 
     try:
         # Read current README content
@@ -89,15 +97,23 @@ def update_readme(prices):
 
         # Prepare the new crypto prices table
         prices_table = "\n## Latest Cryptocurrency Prices\n\n"
-        prices_table += "| Cryptocurrency | Symbol | Price (USD) | 24h Change | Market Cap |\n"
-        prices_table += "|--------------|--------|-------------|------------|------------|\n"
+        prices_table += "| Cryptocurrency | Symbol | Price (USD) | 24h Change | Price Change (vs Yesterday) | Market Cap |\n"
+        prices_table += "|--------------|--------|-------------|------------|---------------------------|------------|\n"
 
         for name, data in prices.items():
             price = f"${data['price_usd']:,.2f}" if data['price_usd'] else "N/A"
             change = f"{data['price_change_24h']:+.2f}%" if data['price_change_24h'] is not None else "N/A"
             market_cap = f"${data['market_cap']:,.0f}" if data['market_cap'] else "N/A"
 
-            prices_table += f"| {name} | {data['symbol']} | {price} | {change} | {market_cap} |\n"
+            # Calculate change compared to previous day
+            prev_change = "N/A"
+            if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+                prev_price = previous_prices[name]['price_usd']
+                current_price = data['price_usd']
+                change_pct = ((current_price - prev_price) / prev_price) * 100
+                prev_change = f"{change_pct:+.2f}%"
+
+            prices_table += f"| {name} | {data['symbol']} | {price} | {change} | {prev_change} | {market_cap} |\n"
 
         prices_table += f"\n*Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC*\n"
 
@@ -120,6 +136,20 @@ def update_readme(prices):
         return False
 
 
+def get_previous_data():
+    """Get previous day's cryptocurrency data for comparison."""
+    try:
+        with open('latest_crypto_prices.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            return data.get('prices', {})
+    except FileNotFoundError:
+        print("No previous data found, this is the first run")
+        return {}
+    except Exception as e:
+        print(f"Error reading previous data: {e}")
+        return {}
+
+
 def save_crypto_data(prices):
     """Save cryptocurrency data to JSON files."""
     if prices is None:
@@ -139,8 +169,14 @@ def save_crypto_data(prices):
                 'prices': prices
             }, f, indent=2, ensure_ascii=False)
 
-        # Update README with latest prices
-        update_readme(prices)
+        # Get previous data for comparison
+        previous_prices = get_previous_data()
+
+        # Update README with latest prices and comparison
+        update_readme(prices, previous_prices)
+
+        # Generate statistics
+        generate_statistics(prices, previous_prices)
 
         print(f"Cryptocurrency data saved to {filename} and latest_crypto_prices.json")
         print("README.md updated with latest prices")
@@ -149,11 +185,221 @@ def save_crypto_data(prices):
         print(f"Error saving data: {e}")
         return False
 
+
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+
+def generate_price_chart(prices):
+    """Generate a price chart for the top cryptocurrencies."""
+    try:
+        # Filter out None values and get top 10 by price
+        valid_prices = {name: data for name, data in prices.items() if data['price_usd'] is not None}
+        top_crypto = sorted(valid_prices.items(), key=lambda x: x[1]['price_usd'], reverse=True)[:10]
+
+        if not top_crypto:
+            print("No valid prices to generate chart")
+            return False
+
+        names = [item[0] for item in top_crypto]
+        values = [item[1]['price_usd'] for item in top_crypto]
+
+        # Create a horizontal bar chart
+        plt.figure(figsize=(10, max(6, len(names) * 0.4)))
+        bars = plt.barh(names, values)
+        plt.xlabel('Price (USD)')
+        plt.title('Top 10 Cryptocurrencies by Price')
+        plt.grid(axis='x', linestyle='--', alpha=0.6)
+
+        # Add value labels on bars
+        for i, v in enumerate(values):
+            plt.text(v, i, f' ${v:,.2f}', va='center', fontsize=9)
+
+        plt.tight_layout()
+        plt.savefig('price_chart.png', dpi=150, bbox_inches='tight')
+        plt.close()
+
+        print("Price chart generated and saved to price_chart.png")
+        return True
+    except Exception as e:
+        print(f"Error generating price chart: {e}")
+        return False
+
+
+def generate_statistics(prices, previous_prices):
+    """Generate and save basic statistics."""
+    if not prices:
+        print("No prices to generate statistics from")
+        return False
+
+    # Generate price chart
+    generate_price_chart(prices)
+
+    try:
+        # Calculate min/max prices from current data
+        all_prices = [data['price_usd'] for data in prices.values() if data['price_usd'] is not None]
+
+        if all_prices:
+            min_price = min(all_prices)
+            max_price = max(all_prices)
+
+            # Find cryptocurrencies with min/max prices
+            min_crypto = next((name for name, data in prices.items() if data['price_usd'] == min_price), None)
+            max_crypto = next((name for name, data in prices.items() if data['price_usd'] == max_price), None)
+
+            # Calculate biggest gainers and losers compared to previous day
+            biggest_gainer = None
+            biggest_loser = None
+            max_gain = float('-inf')
+            max_loss = float('inf')
+
+            for name, data in prices.items():
+                if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+                    prev_price = previous_prices[name]['price_usd']
+                    current_price = data['price_usd']
+                    change_pct = ((current_price - prev_price) / prev_price) * 100
+
+                    if change_pct > max_gain:
+                        max_gain = change_pct
+                        biggest_gainer = (name, change_pct)
+                    if change_pct < max_loss:
+                        max_loss = change_pct
+                        biggest_loser = (name, change_pct)
+
+            # Create statistics data
+            stats = {
+                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "min_price": {"crypto": min_crypto, "value": min_price},
+                "max_price": {"crypto": max_crypto, "value": max_price},
+                "biggest_gainer": biggest_gainer,
+                "biggest_loser": biggest_loser,
+                "total_cryptos_tracked": len(prices)
+            }
+
+            # Save to file
+            with open('stats.json', 'w', encoding='utf-8') as f:
+                json.dump(stats, f, indent=2, ensure_ascii=False)
+
+            print("Statistics generated and saved to stats.json")
+            return True
+
+        return False
+
+    except Exception as e:
+        print(f"Error generating statistics: {e}")
+        return False
+
+
+def check_significant_changes(prices, previous_prices):
+    """Check for significant price changes and log notifications."""
+    try:
+        significant_changes = []
+
+        for name, data in prices.items():
+            if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+                prev_price = previous_prices[name]['price_usd']
+                current_price = data['price_usd']
+
+                if prev_price != 0:
+                    change_pct = abs(((current_price - prev_price) / prev_price) * 100)
+
+                    # Check if change is greater than 5%
+                    if change_pct >= 5.0:
+                        direction = "UP" if current_price > prev_price else "DOWN"
+                        significant_changes.append({
+                            "crypto": name,
+                            "change_pct": change_pct,
+                            "direction": direction,
+                            "previous_price": prev_price,
+                            "current_price": current_price
+                        })
+
+        if significant_changes:
+            # Create notifications file
+            notification_data = {
+                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "significant_changes": significant_changes
+            }
+
+            with open('notifications.json', 'w', encoding='utf-8') as f:
+                json.dump(notification_data, f, indent=2, ensure_ascii=False)
+
+            print(f"Found {len(significant_changes)} significant price changes, logged to notifications.json")
+
+            # Print notifications to console
+            for change in significant_changes:
+                print(f"🚨 {change['crypto']}: Price changed {change['change_pct']:.2f}% {change['direction']} "
+                      f"(${change['previous_price']:.2f} -> ${change['current_price']:.2f})")
+        else:
+            print("No significant price changes (>5%) detected")
+
+        return True
+
+    except Exception as e:
+        print(f"Error checking significant changes: {e}")
+        return False
+
+
+def archive_current_data(prices):
+    """Archive current data to an archive directory."""
+    try:
+        # Create archive directory if it doesn't exist
+        archive_dir = "archive"
+        if not os.path.exists(archive_dir):
+            os.makedirs(archive_dir)
+
+        # Create filename with current date
+        date_str = datetime.utcnow().strftime('%Y-%m-%d')
+        archive_filename = os.path.join(archive_dir, f"prices_{date_str}.json")
+
+        # Save current prices to archive
+        with open(archive_filename, 'w', encoding='utf-8') as f:
+            json.dump({
+                "date": date_str,
+                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "prices": prices
+            }, f, indent=2, ensure_ascii=False)
+
+        # Also keep only last 30 days of archives to avoid unlimited growth
+        cleanup_archive(archive_dir)
+
+        print(f"Current data archived to {archive_filename}")
+        return True
+
+    except Exception as e:
+        print(f"Error archiving data: {e}")
+        return False
+
+
+def cleanup_archive(archive_dir, max_days=30):
+    """Remove archive files older than max_days."""
+    try:
+        import glob
+
+        # Get all archive files
+        archive_files = glob.glob(os.path.join(archive_dir, "prices_*.json"))
+
+        # Sort by date in filename
+        archive_files.sort()
+
+        # Keep only the most recent max_days files
+        if len(archive_files) > max_days:
+            files_to_remove = archive_files[:-max_days]
+            for file_path in files_to_remove:
+                os.remove(file_path)
+                print(f"Removed old archive: {file_path}")
+
+        return True
+    except Exception as e:
+        print(f"Error cleaning up archive: {e}")
+        return False
+
+
 def main():
     """Main function to run the script."""
     print("Fetching cryptocurrency prices...")
     prices = fetch_crypto_prices()
-    
+
     if prices:
         success = save_crypto_data(prices)
         if success:
