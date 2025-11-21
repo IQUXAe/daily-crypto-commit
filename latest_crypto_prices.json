@@ -1,125 +1,125 @@
 {
-  "updated_at": "2025-11-21T18:29:17.324848Z",
+  "updated_at": "2025-11-21T18:36:31.749160Z",
   "prices": {
     "Bitcoin": {
       "symbol": "BITCOIN",
-      "price_usd": 83877,
+      "price_usd": 84221,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323205Z"
+      "timestamp": "2025-11-21T18:36:31.747493Z"
     },
     "Ethereum": {
       "symbol": "ETHEREUM",
-      "price_usd": 2739.51,
+      "price_usd": 2759.88,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323220Z"
+      "timestamp": "2025-11-21T18:36:31.747513Z"
     },
     "Cardano": {
       "symbol": "CARDANO",
-      "price_usd": 0.406486,
+      "price_usd": 0.408777,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323222Z"
+      "timestamp": "2025-11-21T18:36:31.747520Z"
     },
     "Solana": {
       "symbol": "SOLANA",
-      "price_usd": 127.6,
+      "price_usd": 128.32,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323224Z"
+      "timestamp": "2025-11-21T18:36:31.747524Z"
     },
     "Ripple": {
       "symbol": "RIPPLE",
-      "price_usd": 1.94,
+      "price_usd": 1.95,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323227Z"
+      "timestamp": "2025-11-21T18:36:31.747529Z"
     },
     "Dogecoin": {
       "symbol": "DOGECOIN",
-      "price_usd": 0.138976,
+      "price_usd": 0.139868,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323229Z"
+      "timestamp": "2025-11-21T18:36:31.747533Z"
     },
     "Polkadot": {
       "symbol": "POLKADOT",
-      "price_usd": 2.37,
+      "price_usd": 2.38,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323231Z"
+      "timestamp": "2025-11-21T18:36:31.747538Z"
     },
     "Litecoin": {
       "symbol": "LITECOIN",
-      "price_usd": 82.31,
+      "price_usd": 82.59,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323233Z"
+      "timestamp": "2025-11-21T18:36:31.747542Z"
     },
     "Chainlink": {
       "symbol": "CHAINLINK",
-      "price_usd": 12.03,
+      "price_usd": 12.1,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323234Z"
+      "timestamp": "2025-11-21T18:36:31.747546Z"
     },
     "Stellar": {
       "symbol": "STELLAR",
-      "price_usd": 0.230035,
+      "price_usd": 0.231583,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323236Z"
+      "timestamp": "2025-11-21T18:36:31.747550Z"
     },
     "Monero": {
       "symbol": "MONERO",
-      "price_usd": 332.39,
+      "price_usd": 333.07,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323240Z"
+      "timestamp": "2025-11-21T18:36:31.747554Z"
     },
     "Algorand": {
       "symbol": "ALGORAND",
-      "price_usd": 0.136415,
+      "price_usd": 0.137145,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323242Z"
+      "timestamp": "2025-11-21T18:36:31.747559Z"
     },
     "VeChain": {
       "symbol": "VECHAIN",
-      "price_usd": 0.01300193,
+      "price_usd": 0.01308079,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323244Z"
+      "timestamp": "2025-11-21T18:36:31.747563Z"
     },
     "Ontology": {
       "symbol": "ONTOLOGY",
-      "price_usd": 0.07044,
+      "price_usd": 0.070818,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323246Z"
+      "timestamp": "2025-11-21T18:36:31.747567Z"
     },
     "Zcash": {
       "symbol": "ZCASH",
-      "price_usd": 584.76,
+      "price_usd": 589.51,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2025-11-21T18:29:17.323248Z"
+      "timestamp": "2025-11-21T18:36:31.747571Z"
     }
   }
 }
