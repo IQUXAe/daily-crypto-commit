@@ -1,6 +1,7 @@
 {
   "Bitcoin": {
     "symbol": "BITCOIN",
+<<<<<<< HEAD
     "price_usd": 83468,
     "price_change_24h": null,
     "market_cap": null,
@@ -118,5 +119,84 @@
     "market_cap": null,
     "volume_24h": null,
     "timestamp": "2025-11-21T18:24:46.561970Z"
+=======
+    "price_usd": 83580,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243281Z"
+  },
+  "Ethereum": {
+    "symbol": "ETHEREUM",
+    "price_usd": 2727.13,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243293Z"
+  },
+  "Cardano": {
+    "symbol": "CARDANO",
+    "price_usd": 0.40735,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243296Z"
+  },
+  "Solana": {
+    "symbol": "SOLANA",
+    "price_usd": 127.46,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243298Z"
+  },
+  "Ripple": {
+    "symbol": "RIPPLE",
+    "price_usd": 1.95,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243299Z"
+  },
+  "Dogecoin": {
+    "symbol": "DOGECOIN",
+    "price_usd": 0.139439,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243301Z"
+  },
+  "Polkadot": {
+    "symbol": "POLKADOT",
+    "price_usd": 2.37,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243302Z"
+  },
+  "Litecoin": {
+    "symbol": "LITECOIN",
+    "price_usd": 82.33,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243303Z"
+  },
+  "Chainlink": {
+    "symbol": "CHAINLINK",
+    "price_usd": 12.02,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243305Z"
+  },
+  "Stellar": {
+    "symbol": "STELLAR",
+    "price_usd": 0.230691,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-11-21T18:16:03.243306Z"
+>>>>>>> b04dad7c4aac8dec93ec63c2575e625880fe539a
   }
 }
