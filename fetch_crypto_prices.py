@@ -5,11 +5,14 @@ This script is designed to be run by a GitHub Action daily at 12:00 PM UTC.
 """
 
 import json
+import os
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
+import matplotlib.pyplot as plt
+from typing import Dict, Any, Optional, List
 
 # List of cryptocurrencies to track (symbol: name)
-CRYPTO_LIST = {
+CRYPTO_LIST: Dict[str, str] = {
     "bitcoin": "Bitcoin",
     "ethereum": "Ethereum",
     "cardano": "Cardano",
@@ -27,7 +30,7 @@ CRYPTO_LIST = {
     "zcash": "Zcash"
 }
 
-def fetch_crypto_prices():
+def fetch_crypto_prices() -> Optional[Dict[str, Any]]:
     """Fetch current prices for specified cryptocurrencies from CoinGecko API."""
     prices = {}
     try:
@@ -44,7 +47,8 @@ def fetch_crypto_prices():
             'include_24h_vol': True
         }
         
-        response = requests.get(url, params=params)
+        # Added timeout to prevent hanging indefinitely
+        response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         
         data = response.json()
@@ -58,7 +62,7 @@ def fetch_crypto_prices():
                     'price_change_24h': crypto_data.get('usd_24h_change'),
                     'market_cap': crypto_data.get('usd_market_cap'),
                     'volume_24h': crypto_data.get('usd_24h_vol'),
-                    'timestamp': datetime.utcnow().isoformat() + "Z"
+                    'timestamp': datetime.now(timezone.utc).isoformat()
                 }
         
         return prices
@@ -70,7 +74,7 @@ def fetch_crypto_prices():
         print(f"Unexpected error: {e}")
         return None
 
-def update_readme(prices, previous_prices=None):
+def update_readme(prices: Dict[str, Any], previous_prices: Optional[Dict[str, Any]] = None) -> bool:
     """Update README file with the latest cryptocurrency prices and comparison."""
     if prices is None:
         print("No data to update in README")
@@ -107,18 +111,19 @@ def update_readme(prices, previous_prices=None):
 
             # Calculate change compared to previous day
             prev_change = "N/A"
-            if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+            if name in previous_prices and data['price_usd'] and previous_prices[name].get('price_usd'):
                 prev_price = previous_prices[name]['price_usd']
                 current_price = data['price_usd']
-                change_pct = ((current_price - prev_price) / prev_price) * 100
-                prev_change = f"{change_pct:+.2f}%"
+                if prev_price != 0:
+                    change_pct = ((current_price - prev_price) / prev_price) * 100
+                    prev_change = f"{change_pct:+.2f}%"
 
             prices_table += f"| {name} | {data['symbol']} | {price} | {change} | {prev_change} | {market_cap} |\n"
 
-        prices_table += f"\n*Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC*\n"
+        prices_table += f"\n*Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC*\n"
 
         # Replace the content between markers
-        updated_readme = (
+        updated_readme_content = (
             readme_content[:start_index + len(start_marker)] +
             prices_table +
             readme_content[end_index:]
@@ -126,7 +131,7 @@ def update_readme(prices, previous_prices=None):
 
         # Write the updated README
         with open('README.md', 'w', encoding='utf-8') as f:
-            f.write(updated_readme)
+            f.write(updated_readme_content)
 
         print("README.md updated with latest cryptocurrency prices")
         return True
@@ -136,7 +141,7 @@ def update_readme(prices, previous_prices=None):
         return False
 
 
-def get_previous_data():
+def get_previous_data() -> Dict[str, Any]:
     """Get previous day's cryptocurrency data for comparison."""
     try:
         with open('latest_crypto_prices.json', 'r', encoding='utf-8') as f:
@@ -150,13 +155,13 @@ def get_previous_data():
         return {}
 
 
-def save_crypto_data(prices):
+def save_crypto_data(prices: Dict[str, Any]) -> bool:
     """Save cryptocurrency data to JSON files."""
     if prices is None:
         print("No data to save")
         return False
 
-    filename = f"crypto_prices_{datetime.utcnow().strftime('%Y%m%d')}.json"
+    filename = f"crypto_prices_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
 
     try:
         with open(filename, 'w', encoding='utf-8') as f:
@@ -165,7 +170,7 @@ def save_crypto_data(prices):
         # Also update the main file that always has the latest data
         with open('latest_crypto_prices.json', 'w', encoding='utf-8') as f:
             json.dump({
-                'updated_at': datetime.utcnow().isoformat() + "Z",
+                'updated_at': datetime.now(timezone.utc).isoformat(),
                 'prices': prices
             }, f, indent=2, ensure_ascii=False)
 
@@ -178,6 +183,12 @@ def save_crypto_data(prices):
         # Generate statistics
         generate_statistics(prices, previous_prices)
 
+        # Check for significant changes
+        check_significant_changes(prices, previous_prices)
+
+        # Archive current data
+        archive_current_data(prices)
+
         print(f"Cryptocurrency data saved to {filename} and latest_crypto_prices.json")
         print("README.md updated with latest prices")
         return True
@@ -186,11 +197,7 @@ def save_crypto_data(prices):
         return False
 
 
-import os
-import matplotlib.pyplot as plt
-import numpy as np
-
-def generate_price_chart(prices):
+def generate_price_chart(prices: Dict[str, Any]) -> bool:
     """Generate a price chart for the top cryptocurrencies."""
     try:
         # Filter out None values and get top 10 by price
@@ -226,7 +233,7 @@ def generate_price_chart(prices):
         return False
 
 
-def generate_statistics(prices, previous_prices):
+def generate_statistics(prices: Dict[str, Any], previous_prices: Dict[str, Any]) -> bool:
     """Generate and save basic statistics."""
     if not prices:
         print("No prices to generate statistics from")
@@ -254,21 +261,23 @@ def generate_statistics(prices, previous_prices):
             max_loss = float('inf')
 
             for name, data in prices.items():
-                if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+                if name in previous_prices and data['price_usd'] and previous_prices[name].get('price_usd'):
                     prev_price = previous_prices[name]['price_usd']
                     current_price = data['price_usd']
-                    change_pct = ((current_price - prev_price) / prev_price) * 100
 
-                    if change_pct > max_gain:
-                        max_gain = change_pct
-                        biggest_gainer = (name, change_pct)
-                    if change_pct < max_loss:
-                        max_loss = change_pct
-                        biggest_loser = (name, change_pct)
+                    if prev_price != 0:
+                        change_pct = ((current_price - prev_price) / prev_price) * 100
+
+                        if change_pct > max_gain:
+                            max_gain = change_pct
+                            biggest_gainer = (name, change_pct)
+                        if change_pct < max_loss:
+                            max_loss = change_pct
+                            biggest_loser = (name, change_pct)
 
             # Create statistics data
             stats = {
-                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "updated_at": datetime.now(timezone.utc).isoformat(),
                 "min_price": {"crypto": min_crypto, "value": min_price},
                 "max_price": {"crypto": max_crypto, "value": max_price},
                 "biggest_gainer": biggest_gainer,
@@ -290,13 +299,13 @@ def generate_statistics(prices, previous_prices):
         return False
 
 
-def check_significant_changes(prices, previous_prices):
+def check_significant_changes(prices: Dict[str, Any], previous_prices: Dict[str, Any]) -> bool:
     """Check for significant price changes and log notifications."""
     try:
         significant_changes = []
 
         for name, data in prices.items():
-            if name in previous_prices and data['price_usd'] and previous_prices[name]['price_usd']:
+            if name in previous_prices and data['price_usd'] and previous_prices[name].get('price_usd'):
                 prev_price = previous_prices[name]['price_usd']
                 current_price = data['price_usd']
 
@@ -317,7 +326,7 @@ def check_significant_changes(prices, previous_prices):
         if significant_changes:
             # Create notifications file
             notification_data = {
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat(),
                 "significant_changes": significant_changes
             }
 
@@ -340,7 +349,7 @@ def check_significant_changes(prices, previous_prices):
         return False
 
 
-def archive_current_data(prices):
+def archive_current_data(prices: Dict[str, Any]) -> bool:
     """Archive current data to an archive directory."""
     try:
         # Create archive directory if it doesn't exist
@@ -349,14 +358,14 @@ def archive_current_data(prices):
             os.makedirs(archive_dir)
 
         # Create filename with current date
-        date_str = datetime.utcnow().strftime('%Y-%m-%d')
+        date_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
         archive_filename = os.path.join(archive_dir, f"prices_{date_str}.json")
 
         # Save current prices to archive
         with open(archive_filename, 'w', encoding='utf-8') as f:
             json.dump({
                 "date": date_str,
-                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "updated_at": datetime.now(timezone.utc).isoformat(),
                 "prices": prices
             }, f, indent=2, ensure_ascii=False)
 
@@ -371,7 +380,7 @@ def archive_current_data(prices):
         return False
 
 
-def cleanup_archive(archive_dir, max_days=30):
+def cleanup_archive(archive_dir: str, max_days: int = 30) -> bool:
     """Remove archive files older than max_days."""
     try:
         import glob
@@ -395,7 +404,7 @@ def cleanup_archive(archive_dir, max_days=30):
         return False
 
 
-def main():
+def main() -> int:
     """Main function to run the script."""
     print("Fetching cryptocurrency prices...")
     prices = fetch_crypto_prices()
