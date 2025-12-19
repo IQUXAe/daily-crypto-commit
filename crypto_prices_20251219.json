@@ -1,0 +1,122 @@
+{
+  "Bitcoin": {
+    "symbol": "BITCOIN",
+    "price_usd": 87905,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271575+00:00"
+  },
+  "Ethereum": {
+    "symbol": "ETHEREUM",
+    "price_usd": 2955.72,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271594+00:00"
+  },
+  "Cardano": {
+    "symbol": "CARDANO",
+    "price_usd": 0.366747,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271598+00:00"
+  },
+  "Solana": {
+    "symbol": "SOLANA",
+    "price_usd": 125.82,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271601+00:00"
+  },
+  "Ripple": {
+    "symbol": "RIPPLE",
+    "price_usd": 1.88,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271604+00:00"
+  },
+  "Dogecoin": {
+    "symbol": "DOGECOIN",
+    "price_usd": 0.128519,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271606+00:00"
+  },
+  "Polkadot": {
+    "symbol": "POLKADOT",
+    "price_usd": 1.81,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271609+00:00"
+  },
+  "Litecoin": {
+    "symbol": "LITECOIN",
+    "price_usd": 76.23,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271611+00:00"
+  },
+  "Chainlink": {
+    "symbol": "CHAINLINK",
+    "price_usd": 12.45,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271613+00:00"
+  },
+  "Stellar": {
+    "symbol": "STELLAR",
+    "price_usd": 0.218824,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271615+00:00"
+  },
+  "Monero": {
+    "symbol": "MONERO",
+    "price_usd": 435.58,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271683+00:00"
+  },
+  "Algorand": {
+    "symbol": "ALGORAND",
+    "price_usd": 0.112072,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271687+00:00"
+  },
+  "VeChain": {
+    "symbol": "VECHAIN",
+    "price_usd": 0.01040403,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271689+00:00"
+  },
+  "Ontology": {
+    "symbol": "ONTOLOGY",
+    "price_usd": 0.053401,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271691+00:00"
+  },
+  "Zcash": {
+    "symbol": "ZCASH",
+    "price_usd": 428.87,
+    "price_change_24h": null,
+    "market_cap": null,
+    "volume_24h": null,
+    "timestamp": "2025-12-19T12:58:07.271696+00:00"
+  }
+}
