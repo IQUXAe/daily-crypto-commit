@@ -50,21 +50,21 @@ The workflow is configured in `.github/workflows/daily-crypto.yml` and is schedu
 
 | Cryptocurrency | Symbol | Price (USD) | 24h Change | Price Change (vs Yesterday) | Market Cap |
 |--------------|--------|-------------|------------|---------------------------|------------|
-| Bitcoin | BITCOIN | $68,231.00 | N/A | +0.00% | N/A |
-| Ethereum | ETHEREUM | $2,001.90 | N/A | +0.00% | N/A |
-| Cardano | CARDANO | $0.26 | N/A | +0.00% | N/A |
-| Solana | SOLANA | $84.23 | N/A | +0.00% | N/A |
-| Ripple | RIPPLE | $1.36 | N/A | +0.00% | N/A |
-| Dogecoin | DOGECOIN | $0.09 | N/A | +0.00% | N/A |
-| Polkadot | POLKADOT | $1.49 | N/A | +0.00% | N/A |
-| Litecoin | LITECOIN | $53.83 | N/A | +0.00% | N/A |
-| Chainlink | CHAINLINK | $8.84 | N/A | +0.00% | N/A |
-| Stellar | STELLAR | $0.15 | N/A | +0.00% | N/A |
-| Monero | MONERO | $343.77 | N/A | +0.00% | N/A |
-| Algorand | ALGORAND | $0.08 | N/A | +0.00% | N/A |
+| Bitcoin | BITCOIN | $70,766.00 | N/A | +0.00% | N/A |
+| Ethereum | ETHEREUM | $2,055.06 | N/A | +0.00% | N/A |
+| Cardano | CARDANO | $0.27 | N/A | +0.00% | N/A |
+| Solana | SOLANA | $87.03 | N/A | +0.00% | N/A |
+| Ripple | RIPPLE | $1.40 | N/A | +0.00% | N/A |
+| Dogecoin | DOGECOIN | $0.10 | N/A | +0.00% | N/A |
+| Polkadot | POLKADOT | $1.51 | N/A | +0.00% | N/A |
+| Litecoin | LITECOIN | $54.27 | N/A | +0.00% | N/A |
+| Chainlink | CHAINLINK | $9.06 | N/A | +0.00% | N/A |
+| Stellar | STELLAR | $0.16 | N/A | +0.00% | N/A |
+| Monero | MONERO | $347.20 | N/A | +0.00% | N/A |
+| Algorand | ALGORAND | $0.09 | N/A | +0.00% | N/A |
 | VeChain | VECHAIN | $0.01 | N/A | +0.00% | N/A |
 | Ontology | ONTOLOGY | $0.04 | N/A | +0.00% | N/A |
-| Zcash | ZCASH | $210.22 | N/A | +0.00% | N/A |
+| Zcash | ZCASH | $227.90 | N/A | +0.00% | N/A |
 
-*Last updated: 2026-03-09 13:22:52 UTC*
+*Last updated: 2026-03-10 13:20:07 UTC*
 <!-- CRYPTO_PRICES_END -->
