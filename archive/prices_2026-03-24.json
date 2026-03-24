@@ -1,38 +1,38 @@
 {
-  "date": "2026-02-22",
-  "updated_at": "2026-02-22T13:07:47.043563+00:00",
+  "date": "2026-03-24",
+  "updated_at": "2026-03-24T13:42:19.720726+00:00",
   "prices": {
     "Bitcoin": {
       "symbol": "BITCOIN",
-      "price_usd": 67969,
+      "price_usd": 70366,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809035+00:00"
+      "timestamp": "2026-03-24T13:42:19.483770+00:00"
     },
     "Ethereum": {
       "symbol": "ETHEREUM",
-      "price_usd": 1966.66,
+      "price_usd": 2140.23,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809052+00:00"
+      "timestamp": "2026-03-24T13:42:19.483786+00:00"
     },
     "Cardano": {
       "symbol": "CARDANO",
-      "price_usd": 0.273203,
+      "price_usd": 0.262932,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809057+00:00"
+      "timestamp": "2026-03-24T13:42:19.483791+00:00"
     },
     "Solana": {
       "symbol": "SOLANA",
-      "price_usd": 84.46,
+      "price_usd": 90.84,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809061+00:00"
+      "timestamp": "2026-03-24T13:42:19.483794+00:00"
     },
     "Ripple": {
       "symbol": "RIPPLE",
@@ -40,87 +40,87 @@
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809064+00:00"
+      "timestamp": "2026-03-24T13:42:19.483797+00:00"
     },
     "Dogecoin": {
       "symbol": "DOGECOIN",
-      "price_usd": 0.096619,
+      "price_usd": 0.094304,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809067+00:00"
+      "timestamp": "2026-03-24T13:42:19.483800+00:00"
     },
     "Polkadot": {
       "symbol": "POLKADOT",
-      "price_usd": 1.32,
+      "price_usd": 1.39,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809070+00:00"
+      "timestamp": "2026-03-24T13:42:19.483803+00:00"
     },
     "Litecoin": {
       "symbol": "LITECOIN",
-      "price_usd": 54.02,
+      "price_usd": 55.68,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809073+00:00"
+      "timestamp": "2026-03-24T13:42:19.483806+00:00"
     },
     "Chainlink": {
       "symbol": "CHAINLINK",
-      "price_usd": 8.75,
+      "price_usd": 9.17,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809076+00:00"
+      "timestamp": "2026-03-24T13:42:19.483809+00:00"
     },
     "Stellar": {
       "symbol": "STELLAR",
-      "price_usd": 0.155373,
+      "price_usd": 0.166982,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809079+00:00"
+      "timestamp": "2026-03-24T13:42:19.483812+00:00"
     },
     "Monero": {
       "symbol": "MONERO",
-      "price_usd": 318.7,
+      "price_usd": 339.39,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809081+00:00"
+      "timestamp": "2026-03-24T13:42:19.483815+00:00"
     },
     "Algorand": {
       "symbol": "ALGORAND",
-      "price_usd": 0.087551,
+      "price_usd": 0.087144,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809084+00:00"
+      "timestamp": "2026-03-24T13:42:19.483819+00:00"
     },
     "VeChain": {
       "symbol": "VECHAIN",
-      "price_usd": 0.00749062,
+      "price_usd": 0.00710876,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809087+00:00"
+      "timestamp": "2026-03-24T13:42:19.483822+00:00"
     },
     "Ontology": {
       "symbol": "ONTOLOGY",
-      "price_usd": 0.0422489,
+      "price_usd": 0.066607,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809093+00:00"
+      "timestamp": "2026-03-24T13:42:19.483825+00:00"
     },
     "Zcash": {
       "symbol": "ZCASH",
-      "price_usd": 249.29,
+      "price_usd": 225.95,
       "price_change_24h": null,
       "market_cap": null,
       "volume_24h": null,
-      "timestamp": "2026-02-22T13:07:46.809096+00:00"
+      "timestamp": "2026-03-24T13:42:19.483827+00:00"
     }
   }
 }
