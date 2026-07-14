@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-07-13T14:52:26.365748+00:00",
+  "updated_at": "2026-07-14T14:02:54.291353+00:00",
   "min_price": {
     "crypto": "VeChain",
-    "value": 0.00482223
+    "value": 0.00487587
   },
   "max_price": {
     "crypto": "Bitcoin",
-    "value": 62613
+    "value": 63720
   },
   "biggest_gainer": [
     "Bitcoin",
