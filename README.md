@@ -50,21 +50,21 @@ The workflow is configured in `.github/workflows/daily-crypto.yml` and is schedu
 
 | Cryptocurrency | Symbol | Price (USD) | 24h Change | Price Change (vs Yesterday) | Market Cap |
 |--------------|--------|-------------|------------|---------------------------|------------|
-| Bitcoin | BITCOIN | $63,854.00 | N/A | +0.00% | N/A |
-| Ethereum | ETHEREUM | $1,866.21 | N/A | +0.00% | N/A |
+| Bitcoin | BITCOIN | $64,338.00 | N/A | +0.00% | N/A |
+| Ethereum | ETHEREUM | $1,871.71 | N/A | +0.00% | N/A |
 | Cardano | CARDANO | $0.19 | N/A | +0.00% | N/A |
-| Solana | SOLANA | $73.50 | N/A | +0.00% | N/A |
-| Ripple | RIPPLE | $1.07 | N/A | +0.00% | N/A |
+| Solana | SOLANA | $73.79 | N/A | +0.00% | N/A |
+| Ripple | RIPPLE | $1.06 | N/A | +0.00% | N/A |
 | Dogecoin | DOGECOIN | $0.07 | N/A | +0.00% | N/A |
-| Polkadot | POLKADOT | $0.83 | N/A | +0.00% | N/A |
-| Litecoin | LITECOIN | $44.21 | N/A | +0.00% | N/A |
-| Chainlink | CHAINLINK | $8.19 | N/A | +0.00% | N/A |
+| Polkadot | POLKADOT | $0.85 | N/A | +0.00% | N/A |
+| Litecoin | LITECOIN | $45.06 | N/A | +0.00% | N/A |
+| Chainlink | CHAINLINK | $8.14 | N/A | +0.00% | N/A |
 | Stellar | STELLAR | $0.17 | N/A | +0.00% | N/A |
-| Monero | MONERO | $358.06 | N/A | +0.00% | N/A |
+| Monero | MONERO | $354.34 | N/A | +0.00% | N/A |
 | Algorand | ALGORAND | $0.09 | N/A | +0.00% | N/A |
 | VeChain | VECHAIN | $0.00 | N/A | +0.00% | N/A |
 | Ontology | ONTOLOGY | $0.04 | N/A | +0.00% | N/A |
-| Zcash | ZCASH | $487.73 | N/A | +0.00% | N/A |
+| Zcash | ZCASH | $519.40 | N/A | +0.00% | N/A |
 
-*Last updated: 2026-08-04 14:32:58 UTC*
+*Last updated: 2026-08-05 14:26:14 UTC*
 <!-- CRYPTO_PRICES_END -->
