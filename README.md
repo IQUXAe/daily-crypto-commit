@@ -50,21 +50,21 @@ The workflow is configured in `.github/workflows/daily-crypto.yml` and is schedu
 
 | Cryptocurrency | Symbol | Price (USD) | 24h Change | Price Change (vs Yesterday) | Market Cap |
 |--------------|--------|-------------|------------|---------------------------|------------|
-| Bitcoin | BITCOIN | $80,885.00 | N/A | +0.00% | N/A |
-| Ethereum | ETHEREUM | $2,594.63 | N/A | +0.00% | N/A |
-| Cardano | CARDANO | $0.22 | N/A | +0.00% | N/A |
-| Solana | SOLANA | $111.43 | N/A | +0.00% | N/A |
-| Ripple | RIPPLE | $1.38 | N/A | +0.00% | N/A |
+| Bitcoin | BITCOIN | $81,850.00 | N/A | +0.00% | N/A |
+| Ethereum | ETHEREUM | $2,647.15 | N/A | +0.00% | N/A |
+| Cardano | CARDANO | $0.23 | N/A | +0.00% | N/A |
+| Solana | SOLANA | $111.86 | N/A | +0.00% | N/A |
+| Ripple | RIPPLE | $1.44 | N/A | +0.00% | N/A |
 | Dogecoin | DOGECOIN | $0.09 | N/A | +0.00% | N/A |
-| Polkadot | POLKADOT | $1.13 | N/A | +0.00% | N/A |
-| Litecoin | LITECOIN | $56.15 | N/A | +0.00% | N/A |
-| Chainlink | CHAINLINK | $12.18 | N/A | +0.00% | N/A |
-| Stellar | STELLAR | $0.19 | N/A | +0.00% | N/A |
-| Monero | MONERO | $594.82 | N/A | +0.00% | N/A |
+| Polkadot | POLKADOT | $1.12 | N/A | +0.00% | N/A |
+| Litecoin | LITECOIN | $58.14 | N/A | +0.00% | N/A |
+| Chainlink | CHAINLINK | $12.60 | N/A | +0.00% | N/A |
+| Stellar | STELLAR | $0.20 | N/A | +0.00% | N/A |
+| Monero | MONERO | $571.29 | N/A | +0.00% | N/A |
 | Algorand | ALGORAND | $0.10 | N/A | +0.00% | N/A |
 | VeChain | VECHAIN | $0.01 | N/A | +0.00% | N/A |
 | Ontology | ONTOLOGY | $0.05 | N/A | +0.00% | N/A |
-| Zcash | ZCASH | $1,476.00 | N/A | +0.00% | N/A |
+| Zcash | ZCASH | $1,527.03 | N/A | +0.00% | N/A |
 
-*Last updated: 2026-09-18 16:16:25 UTC*
+*Last updated: 2026-09-19 15:46:59 UTC*
 <!-- CRYPTO_PRICES_END -->
